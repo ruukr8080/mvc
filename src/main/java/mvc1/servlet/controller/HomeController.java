@@ -14,26 +14,26 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    @GetMapping("/jsp/**")
-    public String test(HttpServletRequest request, Model model) {
-        Member.builder().age(1).name("a").id(1L).build();
-
-        List<Member> members = new ArrayList<>();
-        members.add(new Member("one",1));
-        members.add(new Member("two",2));
-        members.add(new Member("three",3));
-        members.add(new Member("four",4));
-        model.addAttribute("members", members);
-        Member member = new Member();
-        model.addAttribute("title", "ttttt");
-        model.addAttribute("id", member.getId());
-        model.addAttribute("name", member.getName());
-        model.addAttribute("name", "tetetete");
-        model.addAttribute("age", member.getAge());
-        System.out.println(member.getName());
-        return request.getServletPath();
-
-    }
+//    @GetMapping("/jsp/**")
+//    public String test(HttpServletRequest request, Model model) {
+//        Member.builder().age(1).name("a").id(1L).build();
+//
+//        List<Member> members = new ArrayList<>();
+//        members.add(new Member("one",1));
+//        members.add(new Member("two",2));
+//        members.add(new Member("three",3));
+//        members.add(new Member("four",4));
+//        model.addAttribute("members", members);
+//        Member member = new Member();
+//        model.addAttribute("title", "ttttt");
+//        model.addAttribute("id", member.getId());
+//        model.addAttribute("name", member.getName());
+//        model.addAttribute("name", "tetetete");
+//        model.addAttribute("age", member.getAge());
+//        System.out.println(member.getName());
+//        return request.getServletPath();
+//
+//    }
     @GetMapping("/new-form")
     public String NewForm(HttpServletRequest request, HttpServletResponse response) {
 

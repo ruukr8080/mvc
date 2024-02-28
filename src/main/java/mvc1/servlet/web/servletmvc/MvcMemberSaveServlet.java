@@ -11,27 +11,28 @@ import mvc1.servlet.domain.member.MemberRepository;
 
 import java.io.IOException;
 
-@WebServlet(name="mvcMemberSaveServlet",urlPatterns = "/servlet-mvc/members/save")
+@WebServlet(name = "mvcMemberSaveServlet", urlPatterns = "/servlet-mvc/members/save")
 public class MvcMemberSaveServlet extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //        Member.builder().name(req.getParameter("name")).age(Integer.parseInt(req.getParameter("age")));
         MemberRepository memberRepository = MemberRepository.getInstance();
 
-        String name = req.getParameter("username");
-        int age = Integer.parseInt(req.getParameter("age"));
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
 
-        Member member = new Member(name,age);
+        Member member = new Member(name, age);
         memberRepository.save(member);
 
-        req.setAttribute("member", member);
+        //Model에 데이터를 보관하자
+        request.setAttribute("member", member);
 
-        String viewPath = "/WEB-INF/views/save";
-        RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
+        String viewPath = "/WEB-INF/views/save-result.jsp";
+        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
 
-        dispatcher.forward(req,resp);
+        dispatcher.forward(request, response);
 
     }
 }
